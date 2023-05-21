@@ -8,6 +8,13 @@ const CountryDetail = ({selectedCountry, countries, addFavouriteCountry}) => {
         addFavouriteCountry(selectedCountry)
     }
 
+    const allPopulations = countries.map((country) => {
+        return country.population
+    })
+
+    const worldPopulation = allPopulations.reduce((total, countryPop) => {
+        return total += countryPop
+    }, 0)
 
     const countriesWithBorderCountries = countries.filter((country) => {
         return country.hasOwnProperty('borders')
@@ -36,6 +43,7 @@ const CountryDetail = ({selectedCountry, countries, addFavouriteCountry}) => {
             <div className="country-detail">
                 <p>The capital of {selectedCountry.name.common} is {selectedCountry.capital}.</p>
                 <p>The total population of {selectedCountry.name.common} is {selectedCountry.population}.</p>
+                <p>The total population of the world is {worldPopulation}.</p>
                 <p>It shares no borders.</p>
                 <button onClick={handleClick}>Add to favourites</button>
             
@@ -43,6 +51,7 @@ const CountryDetail = ({selectedCountry, countries, addFavouriteCountry}) => {
         )
     }
     
+    //could this page be dryer? definitely. 
 
 
 
@@ -50,6 +59,7 @@ const CountryDetail = ({selectedCountry, countries, addFavouriteCountry}) => {
         <div className="country-detail">
             <p>The capital of {selectedCountry.name.common} is {selectedCountry.capital}.</p>
             <p>The total population of {selectedCountry.name.common} is {selectedCountry.population}.</p>
+            <p>The total population of the world is {worldPopulation}.</p>
             It shares a border with:
             <ul>{borderCountryNames}</ul>
             <button onClick={handleClick}>Add to favourites</button>
