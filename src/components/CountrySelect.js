@@ -19,7 +19,6 @@ const CountrySelect = ({countries, onCountrySelected}) => {
 
     return (
         <>
-            {/* <label htmlFor="country-dropdown">Choose a country!</label> */}
             <select onChange={handleChange}>
                 {countryItems}
             </select>
